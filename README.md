@@ -1,7 +1,11 @@
 # Kindly App
 
 ## Tech Stack
+### Client
 - React Native
 - ViteJS
 - TypeScript
-- Next.JS + RestAPI
+
+### Server
+- RestAPI
+- TypeScript
