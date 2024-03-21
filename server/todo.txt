@@ -1,1 +1,5 @@
-- Next.js + RestAPI serverside
+Client:
+- Create pages
+
+Sever: 
+- Create database
