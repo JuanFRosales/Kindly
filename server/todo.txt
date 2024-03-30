@@ -1,3 +1,6 @@
+Overall todo:
+- Create branch for server development
+
 Client:
 - Create pages
 
