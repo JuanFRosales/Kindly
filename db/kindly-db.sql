@@ -54,10 +54,10 @@ CREATE TABLE Approvals (
 
 -- Insert the sample data
 
-INSERT INTO UserLevels (level_name) VALUES ('Admin'), ('User'), ('Company'), ('Guest'),;
+INSERT INTO UserLevels (level_name) VALUES ('Admin'), ('User'), ('Company'), ('Guest');
 
 INSERT INTO Users (username, password, email, user_level_id) VALUES
-('McDonalds', 'password123', 'mcdonalds@donalds.com', 4)
+('McDonalds', 'password123', 'mcdonalds@donalds.com', 4),
 ('JohnDoe', 'to-be-hashed-pw1', 'johndoe@example.com', 2),
 ('JaneSmith', 'to-be-hashed-pw2', 'janesmith@example.com', 2),
 ('Anon5468', 'to-be-hashed-pw3', 'anon5468@example.com', 2),
