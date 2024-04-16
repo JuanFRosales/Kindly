@@ -1,0 +1,13 @@
+{
+  "name": "Hybridisovellukset, Autentikointipalvelin",
+  "version": "1.0.0",
+  "description": "For Metropolia Courses",
+  "title": "Autentikointipalvelin",
+  "url": "/api/v1",
+  "template": {
+    "withCompare": true,
+    "withGenerator": true
+  },
+  "exclude": ["node_modules/", "public/"],
+  "files": ["src/**/*.ts"]
+}

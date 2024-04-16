@@ -13,5 +13,5 @@
       "@sharedTypes/*": ["../hybrid-types/*"]
     }
   },
-  "include": ["./*.js", "src/**/*.ts", "test/**/*.ts"]
+  "include": ["./*.js", "src/**/*.ts"]
 }

@@ -1,4 +1,4 @@
-import { MediaItems, UserWithNoPassword } from './DBTypes.ts';
+import { MediaItem, UserWithNoPassword } from './DBTypes';
 
 type MessageResponse = {
   message: string;
@@ -9,7 +9,7 @@ type ErrorResponse = MessageResponse & {
 };
 
 type MediaResponse = MessageResponse & {
-  media: MediaItems | MediaItems[];
+  media: MediaItem | MediaItem[];
 };
 
 // for auth server
