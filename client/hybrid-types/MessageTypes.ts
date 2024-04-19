@@ -1,4 +1,4 @@
-import { MediaItems, UserWithNoPassword } from './DBTypes.ts';
+import { MediaItems, UserWithNoPassword } from './DBTypes.js';
 
 type MessageResponse = {
   message: string;
