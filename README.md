@@ -3,8 +3,9 @@
 ## Tech Stack
 ### Client
 - React Native
-- ViteJS
 - TypeScript
+- Expo
+- React Native Paper (RN Library)
 
 ### Server
 - RestAPI
