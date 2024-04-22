@@ -1,12 +1,16 @@
 module.exports = {
-  extends: ['universe', 'universe/shared/typescript-analysis'],
+  root: true,
+  extends: '@react-native-community',
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint'],
   overrides: [
     {
-      files: ['*.ts', '*.tsx', '*.d.ts'],
-      parserOptions: {
-        project: './tsconfig.json',
+      files: ['*.ts', '*.tsx'],
+      rules: {
+        '@typescript-eslint/no-shadow': ['error'],
+        'no-shadow': 'off',
+        'no-undef': 'off',
       },
     },
   ],
-  rules: {'import/order': ['error', {'newlines-between': 'never'}]},
 };
