@@ -10,8 +10,9 @@ export default function App() {
       <PaperProvider>
 
         <BottomNavigator/>
+        <Text>
 
-        <Text>Open up App.tsx to start working on your app!</Text>
+        </Text>
         <StatusBar style="auto" />
       </PaperProvider>
     </View>
@@ -21,8 +22,12 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
+    backgroundColor: '#f6d992',
+    margin: -10,
+    zIndex: -1,
+
+
   },
+
 });
