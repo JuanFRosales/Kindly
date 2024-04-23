@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^6.5.14",
-    "@react-navigation/native": "^6.1.12",
+    "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.20",
     "expo": "~50.0.14",
     "expo-av": "~13.10.5",
@@ -25,6 +25,7 @@
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@types/react": "~18.2.45",
+    "@types/react-native-vector-icons": "^6.4.18",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-universe": "^12.0.0",
