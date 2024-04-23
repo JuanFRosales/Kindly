@@ -38,7 +38,8 @@ const Feed = () => {
 const styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,
-    resizeMode: 'cover', // Cover the entire container
+    resizeMode: 'cover',
+    zIndex: 50,
   },
   scrollView: {
     flexGrow: 1,

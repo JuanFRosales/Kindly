@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { BottomNavigation, Text } from 'react-native-paper';
+import { BottomNavigation } from 'react-native-paper';
 import Feed from '../views/Feed';
-
-const Profile = () => <Text>Profile</Text>;
-const Settings = () => <Text>Settings</Text>;
-
+import ProfileView from '../views/Profile';
+import Settings from '../views/Settings';
 const BottomNavigator = () => {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
@@ -14,22 +12,23 @@ const BottomNavigator = () => {
   ]);
 
   const renderScene = BottomNavigation.SceneMap({
-    profile: Profile,
+    profile: ProfileView, // Use ProfileView instead of Profile
     feed: Feed,
     settings: Settings,
   });
 
   return (
     <BottomNavigation
-    navigationState={{ index, routes }}
-    onIndexChange={setIndex}
-    renderScene={renderScene}
-    barStyle={styles.navigator}
-    activeColor="#FFFFFF" // Color for the active tab icon and label
-    inactiveColor="#CCCCCC" // Color for the inactive tab icons and labels
+      navigationState={{ index, routes }}
+      onIndexChange={setIndex}
+      renderScene={renderScene}
+      barStyle={styles.navigator}
+      activeColor="#FFFFFF"
+      inactiveColor="#CCCCCC"
     />
   );
 };
+
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -43,7 +42,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     backgroundColor: '#f6a192',
     overflow: 'hidden',
-
+    zIndex: 100,
   },
 });
 

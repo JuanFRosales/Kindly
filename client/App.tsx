@@ -24,6 +24,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-around',
     backgroundColor: '#f6d992',
+    margin: -10,
+    zIndex: -1,
 
 
   },
