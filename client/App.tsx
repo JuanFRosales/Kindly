@@ -10,7 +10,9 @@ export default function App() {
       <PaperProvider>
 
         <BottomNavigator/>
-        <Text>Open up App.tsx to start working on your app!</Text>
+        <Text>
+
+        </Text>
         <StatusBar style="auto" />
       </PaperProvider>
     </View>
