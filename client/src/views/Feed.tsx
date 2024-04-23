@@ -14,20 +14,20 @@ const Feed = () => {
       <ScrollView contentContainerStyle={styles.scrollView}>
         <UserPost
           mode="elevated"
-          title="Post 1"
-          subtitle="Subtitle 1"
+          title="First Post"
+          description="hello world"
           onPress={() => console.log('Post 1 pressed')}
         />
         <UserPost
           mode="elevated"
           title="Post 2"
-          subtitle="Subtitle 2"
+          description="Welcome to the world of React Native!"
           onPress={() => console.log('Post 2 pressed')}
         />
         <UserPost
           mode="elevated"
-          title="Post 3"
-          subtitle="Subtitle 3"
+          title="Last Post"
+          description=""
           onPress={() => console.log('Post 3 pressed')}
         />
       </ScrollView>
