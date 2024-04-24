@@ -1,0 +1,11 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "server for Kindly app",
+  "main": "index.js",
+  "scripts": {
+    "test": "cd api-server && npm test && ../auth-server && npm test && ../upload-server && npm test"
+  },
+  "author": "",
+  "license": "ISC"
+}

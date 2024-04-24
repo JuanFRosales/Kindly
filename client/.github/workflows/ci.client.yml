@@ -1,0 +1,7 @@
+name: Run Kindly Client CI
+
+on: [push]
+
+jobs:
+  test:
+    runs on: ubuntu-latest
