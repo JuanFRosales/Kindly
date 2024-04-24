@@ -67,7 +67,6 @@ const fetchAllMediaByAppId = async (
 const fetchMediaById = async (id: number): Promise<MediaItem | null> => {
   const uploadPath = process.env.UPLOAD_URL;
   try {
-    // TODO: replace * with specific column names needed in this case
     const sql = `SELECT *,
                 CONCAT(?, filename) AS filename,
                 CONCAT(?, CONCAT(filename, "-thumb.png")) AS thumbnail
