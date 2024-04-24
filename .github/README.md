@@ -1,1 +1,0 @@
-# Kindly workflow configuration file
