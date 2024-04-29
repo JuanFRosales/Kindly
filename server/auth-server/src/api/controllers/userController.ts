@@ -30,7 +30,7 @@ const userListGet = async (
       next(new CustomError('Users not found', 404));
       return;
     }
-    res.json(users);
+    res.json(users.map((user) => ({ ...user, profile_picture: user.profile_picture || 'default_profile.jpg' })));
   } catch (error) {
     next(new CustomError((error as Error).message, 500));
   }
@@ -57,7 +57,7 @@ const userGet = async (
       next(new CustomError('User not found', 404));
       return;
     }
-    res.json(user);
+    res.json({ ...user, profile_picture: user.profile_picture || 'default_profile.jpg' });
   } catch (error) {
     next(new CustomError((error as Error).message, 500));
   }
@@ -83,7 +83,8 @@ const userPost = async (
     const user = req.body;
     user.password = await bcrypt.hash(user.password, salt);
 
-    console.log(user);
+
+    user.profile_picture = req.file ? req.file.filename : 'default_profile.jpg';
 
     const newUser = await createUser(user);
     console.log('newUser', newUser);
@@ -100,6 +101,7 @@ const userPost = async (
     next(new CustomError('Duplicate entry', 200));
   }
 };
+
 
 const userPut = async (
   req: Request<{}, {}, User>,

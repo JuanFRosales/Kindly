@@ -7,5 +7,8 @@
     "test": "cd api-server && npm test && ../auth-server && npm test && ../upload-server && npm test"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "multer": "^1.4.5-lts.1"
+  }
 }

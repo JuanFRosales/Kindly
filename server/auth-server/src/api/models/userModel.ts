@@ -14,6 +14,7 @@ const getUserById = async (id: number): Promise<UserWithNoPassword | null> => {
       Users.username,
       Users.email,
       Users.created_at,
+      Users.profile_picture,
       UserLevels.level_name
     FROM Users
     JOIN UserLevels
@@ -43,6 +44,7 @@ const getAllUsers = async (): Promise<UserWithNoPassword[] | null> => {
       Users.username,
       Users.email,
       Users.created_at,
+      Users.profile_picture,
       UserLevels.level_name
     FROM Users
     JOIN UserLevels
@@ -71,6 +73,7 @@ const getUserByEmail = async (email: string): Promise<UserWithLevel | null> => {
       Users.password,
       Users.email,
       Users.created_at,
+      Users.profile_picture,
       UserLevels.level_name
     FROM Users
     JOIN UserLevels
@@ -101,6 +104,7 @@ const getUserByUsername = async (
       Users.password,
       Users.email,
       Users.created_at,
+      Users.profile_picture,
       UserLevels.level_name
     FROM Users
     JOIN UserLevels
@@ -123,10 +127,10 @@ const createUser = async (user: User): Promise<UserWithNoPassword | null> => {
   try {
     const result = await promisePool.execute<ResultSetHeader>(
       `
-    INSERT INTO Users (username, password, email, user_level_id)
-    VALUES (?, ?, ?, ?)
+      INSERT INTO Users (username, password, email, user_level_id, profile_picture)
+      VALUES (?, ?, ?, ?, ?)
   `,
-      [user.username, user.password, user.email, 2]
+      [user.username, user.password, user.email, 2, user.profile_picture || 'default_profile.jpg']
     );
 
     if (result[0].affectedRows === 0) {

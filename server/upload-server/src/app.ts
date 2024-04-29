@@ -20,6 +20,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/uploads', express.static('uploads'));
+app.use('/upload/profile-picture', express.static('uploads'));
 
 app.get<{}, MessageResponse>('/', (req, res) => {
   res.json({
