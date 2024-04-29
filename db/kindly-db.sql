@@ -17,8 +17,10 @@ CREATE TABLE Users (
     email VARCHAR(100) NOT NULL UNIQUE,
     user_level_id INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_level_id) REFERENCES UserLevels(level_id)
+    profile_picture VARCHAR(255),
+    default_profile_picture VARCHAR(255) DEFAULT 'default_profile.jpg'
 );
+
 
 CREATE TABLE MediaItems (
     media_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -56,7 +58,7 @@ CREATE TABLE Approvals (
 
 INSERT INTO UserLevels (level_name) VALUES ('Admin'), ('User'), ('Company'), ('Guest');
 
-INSERT INTO Users (username, password, email, user_level_id) VALUES
+INSERT INTO Users (username, password, email, user_level_id, profile_picture) VALUES
 ('McDonalds', 'password123', 'mcdonalds@donalds.com', 4),
 ('JohnDoe', 'to-be-hashed-pw1', 'johndoe@example.com', 2),
 ('JaneSmith', 'to-be-hashed-pw2', 'janesmith@example.com', 2),
