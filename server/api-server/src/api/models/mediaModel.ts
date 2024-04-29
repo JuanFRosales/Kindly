@@ -184,11 +184,9 @@ const deleteMedia = async (
   try {
     await connection.beginTransaction();
 
-    await connection.execute('DELETE FROM Likes WHERE media_id = ?;', [id]);
+    await connection.execute('DELETE FROM Approvals WHERE media_id = ?;', [id]);
 
     await connection.execute('DELETE FROM Comments WHERE media_id = ?;', [id]);
-
-    await connection.execute('DELETE FROM Ratings WHERE media_id = ?;', [id]);
 
     // ! user_id in SQL so that only the owner of the media item can delete it
     const [result] = await connection.execute<ResultSetHeader>(
@@ -238,10 +236,10 @@ const deleteMedia = async (
  * @throws {Error} - error if database query fails
  */
 
-const fetchMostLikedMedia = async (): Promise<MediaItem | undefined> => {
+const fetchMostApprovedMedia = async (): Promise<MediaItem | undefined> => {
   try {
     const [rows] = await promisePool.execute<RowDataPacket[] & MediaItem[]>(
-      'SELECT * FROM `MostLikedMedia`'
+      'SELECT * FROM `MostApprovedMedia`'
     );
     if (rows.length === 0) {
       return undefined;
@@ -249,7 +247,7 @@ const fetchMostLikedMedia = async (): Promise<MediaItem | undefined> => {
     rows[0].filename =
       process.env.MEDIA_SERVER + '/uploads/' + rows[0].filename;
   } catch (e) {
-    console.error('getMostLikedMedia error', (e as Error).message);
+    console.error('getMostApprovedMedia error', (e as Error).message);
     throw new Error((e as Error).message);
   }
 };
@@ -307,7 +305,7 @@ export {
   fetchMediaById,
   postMedia,
   deleteMedia,
-  fetchMostLikedMedia,
+  fetchMostApprovedMedia,
   fetchMostCommentedMedia,
   fetchHighestRatedMedia,
   putMedia,
