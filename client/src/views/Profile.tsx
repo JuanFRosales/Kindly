@@ -1,25 +1,48 @@
 import * as React from 'react';
 import { ScrollView, ImageBackground, StyleSheet } from 'react-native';
-import UserPost from '../components/UserPost';
+import UserView from '../components/UserView';
+
+//import {useUserContext} from '../hooks/ContextHooks';
+
+
+
 
 
 
 const ProfileView= () => {
+  //const {handleLogout, user} = useUserContext();
+  //const navigation: NavigationProp<ParamListBase> = useNavigation();
   return (
     <ImageBackground
-      source={require('./gradient.png')} // Provide the correct relative path to the image
+      source={require('./gradient.png')}
       style={styles.backgroundImage}
-      resizeMode="cover" // Cover the entire container
+      resizeMode="cover"
     >
+      <ScrollView contentContainerStyle={styles.scrollView}>
+        <UserView
+
+        />
+      </ScrollView>
+
     </ImageBackground>
   );
 };
 
+
 const styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,
-    resizeMode: 'cover', // Cover the entire container
+    resizeMode: 'cover',
+    zIndex: 50,
+  },
+  scrollView: {
+    flexGrow: 1,
+    paddingVertical: 10,
+    marginTop: 20,
+    marginHorizontal: 20,
+    paddingBottom: 20,
   },
 });
+
 
 export default ProfileView;

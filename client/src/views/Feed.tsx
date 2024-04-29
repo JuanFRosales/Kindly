@@ -7,9 +7,9 @@ import UserPost from '../components/UserPost';
 const Feed = () => {
   return (
     <ImageBackground
-      source={require('./gradient.png')} // Provide the correct relative path to the image
+      source={require('./gradient.png')}
       style={styles.backgroundImage}
-      resizeMode="cover" // Cover the entire container
+      resizeMode="cover"
     >
       <ScrollView contentContainerStyle={styles.scrollView}>
         <UserPost

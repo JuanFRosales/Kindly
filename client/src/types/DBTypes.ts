@@ -10,6 +10,7 @@ type User = {
   email: string;
   user_level_id: number;
   created_at: Date | string;
+  profile_picture?: string;
 };
 
 type MediaItem = {
