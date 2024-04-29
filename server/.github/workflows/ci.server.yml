@@ -1,7 +1,0 @@
-name: Run Kindly Server CI
-
-on: [push]
-
-jobs:
-  test:
-    runs on: ubuntu-latest

@@ -174,22 +174,13 @@ const deleteUser = async (id: number): Promise<UserDeleteResponse | null> => {
   try {
     await connection.beginTransaction();
     await connection.execute('DELETE FROM Comments WHERE user_id = ?;', [id]);
-    await connection.execute('DELETE FROM Likes WHERE user_id = ?;', [id]);
-    await connection.execute('DELETE FROM Ratings WHERE user_id = ?;', [id]);
+    await connection.execute('DELETE FROM Approvals WHERE user_id = ?;', [id]);
     await connection.execute(
       'DELETE FROM Comments WHERE media_id IN (SELECT media_id FROM MediaItems WHERE user_id = ?);',
       [id]
     );
     await connection.execute(
-      'DELETE FROM Likes WHERE media_id IN (SELECT media_id FROM MediaItems WHERE user_id = ?);',
-      [id]
-    );
-    await connection.execute(
-      'DELETE FROM Ratings WHERE media_id IN (SELECT media_id FROM MediaItems WHERE user_id = ?);',
-      [id]
-    );
-    await connection.execute(
-      'DELETE FROM MediaItemTags WHERE media_id IN (SELECT media_id FROM MediaItems WHERE user_id = ?);',
+      'DELETE FROM Approvals WHERE media_id IN (SELECT media_id FROM MediaItems WHERE user_id = ?);',
       [id]
     );
     await connection.execute('DELETE FROM MediaItems WHERE user_id = ?;', [id]);
