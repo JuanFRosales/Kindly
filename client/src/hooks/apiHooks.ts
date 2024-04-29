@@ -1,6 +1,6 @@
 import {
   Comment,
-  Like,
+  Approval,
   MediaItem,
   MediaItemWithOwner,
   Rating,
@@ -256,9 +256,9 @@ const useFile = () => {
   return {postFile, postExpoFile, loading};
 };
 
-const useLike = () => {
-  const postLike = async (media_id: number, token: string) => {
-    // Send a POST request to /likes with object { media_id } and the token in the Authorization header.
+const useApproval = () => {
+  const postApproval = async (media_id: number, token: string) => {
+    // Send a POST request to /approvals with the approval object and the token in the Authorization header.
     const options: RequestInit = {
       method: 'POST',
       headers: {
@@ -269,13 +269,13 @@ const useLike = () => {
     };
 
     return await fetchData<MessageResponse>(
-      process.env.EXPO_PUBLIC_MEDIA_API + '/likes',
+      process.env.EXPO_PUBLIC_MEDIA_API + '/approvals',
       options,
     );
   };
 
-  const deleteLike = async (like_id: number, token: string) => {
-    // Send a DELETE request to /likes/:like_id with the token in the Authorization header.
+  const deleteApproval = async (approval_id: number, token: string) => {
+    // Send a DELETE request to /approvals/:approval_id with the token in the Authorization header.
     const options: RequestInit = {
       method: 'DELETE',
       headers: {
@@ -283,33 +283,33 @@ const useLike = () => {
       },
     };
     return await fetchData<MessageResponse>(
-      process.env.EXPO_PUBLIC_MEDIA_API + '/likes/' + like_id,
+      process.env.EXPO_PUBLIC_MEDIA_API + '/approvals/' + approval_id,
       options,
     );
   };
 
   const getCountByMediaId = async (media_id: number) => {
-    // Send a GET request to /likes/:media_id to get the number of likes.
+    // Send a GET request to /approvals/count/:media_id to get the approval count.
     return await fetchData<{count: number}>(
-      process.env.EXPO_PUBLIC_MEDIA_API + '/likes/count/' + media_id,
+      process.env.EXPO_PUBLIC_MEDIA_API + '/approvals/count/' + media_id,
     );
   };
 
-  const getUserLike = async (media_id: number, token: string) => {
-    // Send a GET request to /likes/bymedia/user/:media_id to get the user's like on the media.
+  const getUserApproval = async (media_id: number, token: string) => {
+    // Send a GET request to /approvals/byuser/:media_id to get the user's approval.
     const options: RequestInit = {
       method: 'GET',
       headers: {
         Authorization: 'Bearer ' + token,
       },
     };
-    return await fetchData<Like>(
-      process.env.EXPO_PUBLIC_MEDIA_API + '/likes/bymedia/user/' + media_id,
+    return await fetchData<Approval>(
+      process.env.EXPO_PUBLIC_MEDIA_API + '/approvals/bymedia/user/' + media_id,
       options,
     );
   };
 
-  return {postLike, deleteLike, getCountByMediaId, getUserLike};
+  return {postApproval, deleteApproval, getCountByMediaId, getUserApproval};
 };
 
 const useComment = () => {
@@ -407,7 +407,7 @@ export {
   useUser,
   useAuthentication,
   useFile,
-  useLike,
+  useApproval,
   useComment,
   useRating,
 };

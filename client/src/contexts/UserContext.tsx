@@ -1,4 +1,3 @@
-/*
 import React, {createContext, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {UserWithNoPassword} from '../types/DBTypes';
@@ -62,4 +61,4 @@ const UserProvider = ({children}: {children: React.ReactNode}) => {
   );
 };
 export {UserProvider, UserContext};
-*/
+

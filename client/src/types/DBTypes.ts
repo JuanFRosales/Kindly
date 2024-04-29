@@ -14,7 +14,7 @@ type User = {
 };
 
 type MediaItem = {
-  media_id: string;
+  media_id: number;
   user_id: number;
   filename: string;
   filesize: number;

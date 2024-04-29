@@ -27,6 +27,7 @@ const BottomNavigator = () => {
   }
 
 
+
   return (
     <View style={{ flex: 1 }}>
       <BottomNavigation
@@ -35,10 +36,10 @@ const BottomNavigator = () => {
         renderScene={renderScene}
         renderIcon={renderIcon}
         barStyle={styles.navigator}
-        activeColor="#FFFFFF"
+        activeColor="#000000"
         inactiveColor="#CCCCCC"
-        labeled={false} // Show labels in tabs (change to `true` to show labels)
-        shifting={false} // Disable shifting style animation
+        labeled={true} // Show labels in tabs (change to `true` to show labels)
+        shifting={true} // Disable shifting style animation
       />
     </View>
   );
@@ -47,14 +48,17 @@ const BottomNavigator = () => {
 const styles = StyleSheet.create({
   navigator: {
    alignSelf: 'center',
-    bottom: 0,
     width: '90%',
-    backgroundColor: '#f6a192', // Background color of the bottom navigation bar
+    backgroundColor: '#f6a192',
     borderWidth: 8,
     borderRadius: 20,
     borderColor: 'peachpuff',
     overflow: 'hidden',
     height: 80,
+    marginBottom: 20,
+    justifyContent: 'space-around',
+    paddingTop: 29,
+    paddingHorizontal: 30,
   },
 });
 

@@ -1,4 +1,4 @@
-/*import {Dispatch, SetStateAction, createContext, useState} from 'react';
+import {Dispatch, SetStateAction, createContext, useState} from 'react';
 
 type UpdateContextType = {
   update: boolean;
@@ -18,4 +18,4 @@ const UpdateProvider = ({children}: {children: React.ReactNode}) => {
 };
 
 export {UpdateProvider, UpdateContext};
-*/
+

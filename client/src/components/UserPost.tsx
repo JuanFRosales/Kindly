@@ -1,40 +1,37 @@
-import * as React from "react";
+import React from "react";
 import { Avatar, Button, Card, Text } from "react-native-paper";
-import { StyleSheet } from "react-native";
-import AvatarExample from "./UserAvatar";
-import { text } from "stream/consumers";
+import { StyleSheet, View } from "react-native";
+import UserAvatar from "./UserAvatar";
+import { MediaItemWithOwner } from "../types/DBTypes";
 
 type UserPostProps = {
-  mode?: "elevated";
-  title: string;
-  description: string;
-  onPress?: () => void;
+
+  item: MediaItemWithOwner;
+
 };
 
+
+
 const UserPost: React.FC<UserPostProps> = ({
-  mode = "elevated",
-  title,
-  description,
-  onPress,
+  item: { title, description, },
 }) => {
   return (
-    <Card mode={mode} onPress={onPress} style={styles.card}>
-      <Card.Title
-        title={null} // Add user name here
-        left={(props) => <AvatarExample />}
-      />
+    <Card style={styles.card}>
+      <View style={styles.headerContainer}>
+        <UserAvatar />
+        <Text style={styles.title}>{title}</Text>
+      </View>
       <Card.Content>
-        <Text variant="titleLarge">{title}</Text>
-        <Text variant="bodyMedium">{description}</Text>
+        <Text style={styles.description}>{description}</Text>
       </Card.Content>
       <Card.Cover source={{ uri: "https://picsum.photos/750" }} />
       <Card.Actions>
         <Button style={styles.button}>❤️‍🔥</Button>
-        <Button style={styles.button}>&#128172;</Button>
+        <Button style={styles.button}>📝</Button>
       </Card.Actions>
     </Card>
   );
-};
+}
 
 const styles = StyleSheet.create({
   card: {
@@ -43,8 +40,21 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     borderColor: "#f6a192",
     borderWidth: 1,
-    justifyContent: "space-between",
-    alignContent: "center",
+  },
+  headerContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 10,
+    marginBottom: 10,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginLeft: 10,
+  },
+  description: {
+    fontSize: 16,
+    marginBottom: 10,
   },
   button: {
     backgroundColor: "#de6752",

@@ -3,7 +3,6 @@ import { ScrollView, ImageBackground, StyleSheet } from 'react-native';
 import UserPost from '../components/UserPost';
 
 
-
 const Feed = () => {
   return (
     <ImageBackground
@@ -12,24 +11,7 @@ const Feed = () => {
       resizeMode="cover"
     >
       <ScrollView contentContainerStyle={styles.scrollView}>
-        <UserPost
-          mode="elevated"
-          title="First Post"
-          description="hello world"
-          onPress={() => console.log('Post 1 pressed')}
-        />
-        <UserPost
-          mode="elevated"
-          title="Post 2"
-          description="Welcome to the world of React Native!"
-          onPress={() => console.log('Post 2 pressed')}
-        />
-        <UserPost
-          mode="elevated"
-          title="Last Post"
-          description=""
-          onPress={() => console.log('Post 3 pressed')}
-        />
+        
       </ScrollView>
     </ImageBackground>
   );
