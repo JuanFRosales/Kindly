@@ -1,8 +1,8 @@
-import {Button} from '@rneui/base';
-import {useState} from 'react';
-import LoginForm from '../components/LoginComponent';
-import RegisterForm from '../components/RegisterForm';
-import { TouchableOpacity } from 'react-native';
+import { Button } from "@rneui/base";
+import { useState } from "react";
+import { TouchableOpacity } from "react-native";
+import LoginForm from "../components/LoginComponent";
+import RegisterForm from "../components/RegisterForm";
 
 const Login = () => {
   const [toggleRegister, setToggleRegister] = useState(false);
@@ -17,7 +17,7 @@ const Login = () => {
       <Button
         onPress={handleToggle}
         title={
-          !toggleRegister ? 'No account yet? Register here!' : 'Back to Login.'
+          !toggleRegister ? "No account yet? Register here!" : "Back to Login."
         }
       />
     </TouchableOpacity>

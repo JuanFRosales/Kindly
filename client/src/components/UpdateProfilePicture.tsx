@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
-import { View, Button, Image, Alert } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
-import { Avatar } from 'react-native-paper';
+import React, { useState } from "react";
+import { View, Button, Image, Alert } from "react-native";
+import * as ImagePicker from "expo-image-picker";
+import { Avatar } from "react-native-paper";
 
 const UpdateAvatar = () => {
   const [avatarUri, setAvatarUri] = useState<string | null>(null);
 
-
   const pickAvatar = async () => {
-    const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    const permissionResult =
+      await ImagePicker.requestMediaLibraryPermissionsAsync();
 
     if (!permissionResult.granted) {
-      Alert.alert('Permission Denied', 'Please enable camera roll permissions to select an image.');
+      Alert.alert(
+        "Permission Denied",
+        "Please enable camera roll permissions to select an image.",
+      );
       return;
     }
 
@@ -21,12 +24,10 @@ const UpdateAvatar = () => {
       aspect: [1, 1],
       quality: 1,
     });
-
-
   };
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       {avatarUri ? (
         <Avatar.Image size={120} source={{ uri: avatarUri }} />
       ) : (
@@ -39,7 +40,7 @@ const UpdateAvatar = () => {
         <Button
           title="Save"
           onPress={() => {
-            console.log('Save Avatar');
+            console.log("Save Avatar");
           }}
         />
       )}

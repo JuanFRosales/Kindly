@@ -1,24 +1,24 @@
-import {Controller, useForm} from 'react-hook-form';
-import {Button, Card, Input} from '@rneui/base';
-import {Alert} from 'react-native';
-import {useUser} from '../hooks/apiHooks';
+import { Controller, useForm } from "react-hook-form";
+import { Button, Card, Input } from "@rneui/base";
+import { Alert } from "react-native";
+import { useUser } from "../hooks/apiHooks";
 
-const RegisterForm = ({handleToggle}: {handleToggle: () => void}) => {
-  const {postUser, getUsernameAvailable, getEmailAvailable} = useUser();
+const RegisterForm = ({ handleToggle }: { handleToggle: () => void }) => {
+  const { postUser, getUsernameAvailable, getEmailAvailable } = useUser();
   const initValues = {
-    username: '',
-    password: '',
-    confirmPassword: '',
-    email: '',
+    username: "",
+    password: "",
+    confirmPassword: "",
+    email: "",
   };
   const {
     control,
     handleSubmit,
-    formState: {errors},
+    formState: { errors },
     getValues,
   } = useForm({
     defaultValues: initValues,
-    mode: 'onBlur',
+    mode: "onBlur",
   });
 
   const doRegister = async (inputs: {
@@ -30,10 +30,10 @@ const RegisterForm = ({handleToggle}: {handleToggle: () => void}) => {
     try {
       delete inputs.confirmPassword;
       await postUser(inputs);
-      Alert.alert('User created', 'You can now login');
+      Alert.alert("User created", "You can now login");
       handleToggle();
     } catch (error) {
-      Alert.alert('Error', (error as Error).message);
+      Alert.alert("Error", (error as Error).message);
     }
   };
 
@@ -44,19 +44,19 @@ const RegisterForm = ({handleToggle}: {handleToggle: () => void}) => {
         rules={{
           required: {
             value: true,
-            message: 'is required',
+            message: "is required",
           },
           validate: async (value) => {
             try {
-              const {available} = await getUsernameAvailable(value);
-              console.log('username available?', value, available);
-              return available ? available : 'Username taken';
+              const { available } = await getUsernameAvailable(value);
+              console.log("username available?", value, available);
+              return available ? available : "Username taken";
             } catch (error) {
               console.log((error as Error).message);
             }
           },
         }}
-        render={({field: {onChange, onBlur, value}}) => (
+        render={({ field: { onChange, onBlur, value } }) => (
           <Input
             placeholder="Username"
             onBlur={onBlur}
@@ -79,9 +79,9 @@ const RegisterForm = ({handleToggle}: {handleToggle: () => void}) => {
           //   message:
           //     'Password must contain at least 5 characters, 1 special character (@, $, !, %, *, #, ?, &), and 1 number',
           // },
-          required: {value: true, message: 'is required'},
+          required: { value: true, message: "is required" },
         }}
-        render={({field: {onChange, onBlur, value}}) => (
+        render={({ field: { onChange, onBlur, value } }) => (
           <Input
             placeholder="Password"
             secureTextEntry
@@ -97,11 +97,11 @@ const RegisterForm = ({handleToggle}: {handleToggle: () => void}) => {
       <Controller
         control={control}
         rules={{
-          required: {value: true, message: 'is required'},
+          required: { value: true, message: "is required" },
           validate: (value) =>
-            value === getValues().password ? true : 'Passwords do not match',
+            value === getValues().password ? true : "Passwords do not match",
         }}
-        render={({field: {onChange, onBlur, value}}) => (
+        render={({ field: { onChange, onBlur, value } }) => (
           <Input
             placeholder="Confirm password"
             secureTextEntry
@@ -118,21 +118,21 @@ const RegisterForm = ({handleToggle}: {handleToggle: () => void}) => {
         control={control}
         rules={{
           maxLength: 100,
-          required: {value: true, message: 'is required'},
+          required: { value: true, message: "is required" },
           pattern: {
             value: /^\S+@\S+\.\S+$/,
-            message: 'Invalid email address',
+            message: "Invalid email address",
           },
           validate: async (value) => {
             try {
-              const {available} = await getEmailAvailable(value);
-              return available ? available : 'Email taken';
+              const { available } = await getEmailAvailable(value);
+              return available ? available : "Email taken";
             } catch (error) {
               console.log((error as Error).message);
             }
           },
         }}
-        render={({field: {onChange, onBlur, value}}) => (
+        render={({ field: { onChange, onBlur, value } }) => (
           <Input
             placeholder="Email"
             onBlur={onBlur}

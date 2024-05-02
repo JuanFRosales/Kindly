@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import * as React from "react";
 import { Button, Card, Text } from "react-native-paper";
 //import {useUserContext} from '../hooks/ContextHooks';
@@ -11,9 +12,7 @@ const UserView = () => {
   return (
     <>
       <Card mode="elevated" style={styles.card}>
-        <Card.Title title="Username"
-        titleStyle={styles.cardTitle}
-         />
+        <Card.Title title="Username" titleStyle={styles.cardTitle} />
         <Card.Content>
           <ProfilePicture />
         </Card.Content>
@@ -43,7 +42,6 @@ const styles = StyleSheet.create({
     borderWidth: 4,
     justifyContent: "center",
     padding: 10,
-
   },
   scrollView: {
     flexGrow: 1,
@@ -58,7 +56,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     color: "white",
-   padding: 10,
+    padding: 10,
   },
 });
 

@@ -59,11 +59,12 @@ CREATE TABLE Approvals (
 INSERT INTO UserLevels (level_name) VALUES ('Admin'), ('User'), ('Company'), ('Guest');
 
 INSERT INTO Users (username, password, email, user_level_id, profile_picture) VALUES
-('McDonalds', 'password123', 'mcdonalds@donalds.com', 4),
-('JohnDoe', 'to-be-hashed-pw1', 'johndoe@example.com', 2),
-('JaneSmith', 'to-be-hashed-pw2', 'janesmith@example.com', 2),
-('Anon5468', 'to-be-hashed-pw3', 'anon5468@example.com', 2),
-('AdminUser', 'to-be-hashed-pw4', 'adminuser@example.com', 1);
+('McDonalds', 'password123', 'mcdonalds@donalds.com', 4, 'mcdonalds_profile.jpg'),
+('JohnDoe', 'to-be-hashed-pw1', 'johndoe@example.com', 2, 'john_doe_profile.jpg'),
+('JaneSmith', 'to-be-hashed-pw2', 'janesmith@example.com', 2, 'jane_smith_profile.jpg'),
+('Anon5468', 'to-be-hashed-pw3', 'anon5468@example.com', 2, 'anon5468_profile.jpg'),
+('AdminUser', 'to-be-hashed-pw4', 'adminuser@example.com', 1, 'admin_user_profile.jpg');
+
 
 INSERT INTO MediaItems (user_id, filename, filesize, media_type, title, description) VALUES
 (1, 'sunset.jpg', 1024, 'image/jpeg', 'Sunset', 'A beautiful sunset'),

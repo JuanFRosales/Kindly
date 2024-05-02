@@ -1,18 +1,19 @@
-import {Controller, useForm} from 'react-hook-form';
-import {Button, Card, Input} from '@rneui/base';
-import {useUserContext} from '../hooks/ContextHooks';
-import {Credentials} from '../types/LocalTypes';
+import { Controller, useForm } from "react-hook-form";
+import { Button, Card, Input } from "@rneui/base";
+import { useUserContext } from "../hooks/ContextHooks";
+import { Credentials } from "../types/LocalTypes";
 
 const LoginForm = () => {
-  const {handleLogin} = useUserContext();
+  const { handleLogin } = useUserContext();
   const initValues: Credentials = {
-    username: '', password: '',
-    email: ''
+    username: "",
+    password: "",
+    email: "",
   };
   const {
     control,
     handleSubmit,
-    formState: {errors},
+    formState: { errors },
   } = useForm({
     defaultValues: initValues,
   });
@@ -28,10 +29,10 @@ const LoginForm = () => {
         rules={{
           required: {
             value: true,
-            message: 'Username is required',
+            message: "Username is required",
           },
         }}
-        render={({field: {onChange, onBlur, value}}) => (
+        render={({ field: { onChange, onBlur, value } }) => (
           <Input
             placeholder="Username"
             onBlur={onBlur}
@@ -48,9 +49,9 @@ const LoginForm = () => {
         control={control}
         rules={{
           maxLength: 100,
-          required: {value: true, message: 'is required'},
+          required: { value: true, message: "is required" },
         }}
-        render={({field: {onChange, onBlur, value}}) => (
+        render={({ field: { onChange, onBlur, value } }) => (
           <Input
             placeholder="Password"
             secureTextEntry

@@ -1,35 +1,35 @@
-import {useEffect, useState} from 'react';
-import {useForm, Controller} from 'react-hook-form';
-import {Input, Card, Button, ListItem} from '@rneui/base';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useNavigation} from '@react-navigation/native';
-import {useUserContext} from '../hooks/ContextHooks';
-import {Comment, MediaItemWithOwner} from '../types/DBTypes';
-import {useComment} from '../hooks/apiHooks';
+import { useEffect, useState } from "react";
+import { useForm, Controller } from "react-hook-form";
+import { Input, Card, Button, ListItem } from "@rneui/base";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
+import { useUserContext } from "../hooks/ContextHooks";
+import { Comment, MediaItemWithOwner } from "../types/DBTypes";
+import { useComment } from "../hooks/apiHooks";
 
-const Comments = ({item}: {item: MediaItemWithOwner}) => {
+const Comments = ({ item }: { item: MediaItemWithOwner }) => {
   const [comments, setComments] = useState<
     (Comment & {
       username: string;
     })[]
   >([]);
-  const {user} = useUserContext();
-  const {getCommentsByMediaId, postComment} = useComment();
+  const { user } = useUserContext();
+  const { getCommentsByMediaId, postComment } = useComment();
   const navigation = useNavigation();
 
-  const initValues = {comment_text: ''};
+  const initValues = { comment_text: "" };
 
   const {
     reset,
     control,
     handleSubmit,
-    formState: {errors},
+    formState: { errors },
   } = useForm({
     defaultValues: initValues,
   });
 
-  const doComment = async (inputs: {comment_text: string}) => {
-    const token = await AsyncStorage.getItem('token');
+  const doComment = async (inputs: { comment_text: string }) => {
+    const token = await AsyncStorage.getItem("token");
     if (!user || !token) {
       return;
     }
@@ -39,7 +39,7 @@ const Comments = ({item}: {item: MediaItemWithOwner}) => {
       // resetoi lomake
       reset();
     } catch (error) {
-      console.error('postComment failed', error);
+      console.error("postComment failed", error);
     }
   };
 
@@ -48,7 +48,7 @@ const Comments = ({item}: {item: MediaItemWithOwner}) => {
       const comments = await getCommentsByMediaId(item.media_id);
       setComments(comments);
     } catch (error) {
-      console.log('getComments failed', error);
+      console.log("getComments failed", error);
       setComments([]);
     }
   };
@@ -56,7 +56,7 @@ const Comments = ({item}: {item: MediaItemWithOwner}) => {
   useEffect(() => {
     getComments();
 
-    const unsubscribe = navigation.addListener('focus', () => {
+    const unsubscribe = navigation.addListener("focus", () => {
       reset();
     });
 
@@ -72,7 +72,7 @@ const Comments = ({item}: {item: MediaItemWithOwner}) => {
             <ListItem>
               <ListItem.Content>
                 <ListItem.Subtitle>
-                  On {new Date(comment.created_at!).toLocaleDateString('fi-FI')}{' '}
+                  On {new Date(comment.created_at!).toLocaleDateString("fi-FI")}{" "}
                   {comment.username} wrote:
                 </ListItem.Subtitle>
                 <ListItem.Title>{comment.comment_text}</ListItem.Title>
@@ -89,10 +89,10 @@ const Comments = ({item}: {item: MediaItemWithOwner}) => {
             rules={{
               required: {
                 value: true,
-                message: 'Kommentti tarttis laittaa',
+                message: "Kommentti tarttis laittaa",
               },
             }}
-            render={({field: {onChange, onBlur, value}}) => (
+            render={({ field: { onChange, onBlur, value } }) => (
               <Input
                 onBlur={onBlur}
                 onChangeText={onChange}
@@ -104,7 +104,7 @@ const Comments = ({item}: {item: MediaItemWithOwner}) => {
             )}
             name="comment_text"
           />
-          <Button onPress={handleSubmit(doComment)} title={'Post'} />
+          <Button onPress={handleSubmit(doComment)} title={"Post"} />
           <Card.Divider />
         </Card>
       )}
