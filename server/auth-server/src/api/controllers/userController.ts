@@ -1,5 +1,4 @@
 // Description: This file contains the functions for the user routes
-
 import {NextFunction, Request, Response} from 'express';
 import CustomError from '../../classes/CustomError';
 import bcrypt from 'bcryptjs';
@@ -15,6 +14,7 @@ import {
 } from '../models/userModel';
 import {TokenContent, User, UserWithNoPassword} from '@sharedTypes/DBTypes';
 import {validationResult} from 'express-validator';
+//import
 
 const salt = bcrypt.genSaltSync(12);
 
@@ -83,8 +83,6 @@ const userPost = async (
     const user = req.body;
     user.password = await bcrypt.hash(user.password, salt);
 
-
-    user.profile_picture = req.file ? req.file.filename : 'default_profile.jpg';
 
     const newUser = await createUser(user);
     console.log('newUser', newUser);

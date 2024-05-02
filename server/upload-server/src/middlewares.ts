@@ -129,4 +129,4 @@ const makeThumbnail = async (
   }
 };
 
-export {notFound, errorHandler, authenticate, makeThumbnail, uploadProfilePicture;
+export {notFound, errorHandler, authenticate, makeThumbnail, uploadProfilePicture};

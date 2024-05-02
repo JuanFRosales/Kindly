@@ -1,6 +1,3 @@
-/* eslint-disable eol-last */
-/* eslint-disable prettier/prettier */
-//App for express server
 require('dotenv').config();
 import express, {Request, Response} from 'express';
 import morgan from 'morgan';

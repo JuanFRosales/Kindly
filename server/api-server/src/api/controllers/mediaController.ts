@@ -1,5 +1,3 @@
-/* eslint-disable eol-last */
-/* eslint-disable prettier/prettier */
 import {Request, Response, NextFunction} from 'express';
 import {
   deleteMedia,
