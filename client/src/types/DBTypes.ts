@@ -27,6 +27,7 @@ type MediaItem = {
 type Comment = {
   media_id: number;
   user_id: number;
+  comment_text: string;
   created_at: Date;
 };
 

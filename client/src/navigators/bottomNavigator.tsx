@@ -22,7 +22,7 @@ const BottomNavigator = () => {
 
   const renderIcon = ({ route, color, focused }: { route: any; color: string; focused: boolean }) => {
 
-    const iconSize = focused ? 35 : 30;
+    const iconSize = focused ? 36 : 30;
     return <Icon name={route.icon} size={iconSize} color={color} />;
   }
 
@@ -36,8 +36,8 @@ const BottomNavigator = () => {
         renderScene={renderScene}
         renderIcon={renderIcon}
         barStyle={styles.navigator}
-        activeColor="#000000"
-        inactiveColor="#CCCCCC"
+        activeColor="#751102"
+        inactiveColor="#ffea98"
         labeled={true} // Show labels in tabs (change to `true` to show labels)
         shifting={true} // Disable shifting style animation
       />
@@ -56,8 +56,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     height: 80,
     marginBottom: 20,
-    justifyContent: 'space-around',
-    paddingTop: 29,
+    justifyContent: 'space-between',
     paddingHorizontal: 30,
   },
 });
