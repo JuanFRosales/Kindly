@@ -1,52 +1,72 @@
-import * as React from 'react';
-import { Avatar, Button, Card, Text } from 'react-native-paper';
-import { StyleSheet } from 'react-native';
-import AvatarExample from './ProfilePicture';
-import { text } from 'stream/consumers';
+import { Card, Icon, ListItem, Button, Avatar, Text } from "@rneui/base";
+import { MediaItemWithOwner } from "../types/DBTypes";
+import { useUserContext } from "../hooks/ContextHooks";
+import Approvals from "./Approvals";
 
-type UserPostProps = {
-  mode?: 'elevated',
-  title: string,
-  description: string,
-  onPress?: () => void,
+type Props = {
+  item: MediaItemWithOwner;
 };
 
-const UserPost: React.FC<UserPostProps> = ({ mode = 'elevated', title, description, onPress }) => {
+const UserPost = ({ item }: Props) => {
+  const { user } = useUserContext();
   return (
-    <Card mode={mode} onPress={onPress} style={styles.card}>
-      <Card.Title
-        title={null} // Add user name here
-        left={(props) => <AvatarExample {...props}  />}
+    <Card>
+      <Card.Image
+        style={{ aspectRatio: 1, height: 300 }}
+        source={{ uri: "http:" + item }}
       />
-      <Card.Content>
-        <Text variant="titleLarge">{title}</Text>
-        <Text variant="bodyMedium">{description}</Text>
-      </Card.Content>
-      <Card.Cover source={{ uri: 'https://picsum.photos/400' }} />
-      <Card.Actions>
-        <Button style={styles.button}>❤️‍🔥</Button>
-        <Button style={styles.button}>&#128172;</Button>
-      </Card.Actions>
+      <Card.Divider />
+      <ListItem.Swipeable
+        onSwipeBegin={(evt) => {
+          console.log(evt);
+        }}
+        leftContent={(reset) => (
+          <ListItem>
+            {user && user.user_id === item.user_id ? (
+              <>
+                <Button
+                  color="error"
+                  onPress={() => {
+                    console.log("delete");
+                  }}
+                >
+                  {" "}
+                  <Icon type="ionicon" name="trash" color="white" />
+                </Button>
+              </>
+            ) : (
+              <ListItem.Content>
+                <ListItem.Title>Kukkuu</ListItem.Title>
+              </ListItem.Content>
+            )}
+          </ListItem>
+        )}
+      >
+        {user && user.user_id === item.user_id && (
+          <ListItem.Chevron
+            color="black"
+            style={{ transform: "rotate(180deg)" }}
+          />
+        )}
+        <Avatar
+          size={50}
+          icon={{
+            name: item.media_type.includes("image") ? "image" : "film",
+            type: "ionicon",
+            color: "#333",
+          }}
+        />
+        <ListItem.Content>
+          <Text h4>{item.title}</Text>
+          <Text>
+            By: {item.username}, at:{" "}
+            {new Date(item.created_at).toLocaleString("fi-FI")}
+          </Text>
+        </ListItem.Content>
+
+        <Approvals item={item} />
+      </ListItem.Swipeable>
     </Card>
   );
 };
-
-
-const styles = StyleSheet.create({
-  card: {
-    backgroundColor: 'rgba(246, 161, 146, 0.7)',
-    marginBottom: 10,
-    borderRadius: 30,
-    borderColor: '#f6a192',
-    borderWidth: 1,
-    justifyContent: 'space-between',
-    alignContent: 'center',
-  },
-  button: {
-    backgroundColor: '#de6752',
-    marginRight: 10,
-    borderWidth: 0,
-  },
-});
-
 export default UserPost;

@@ -7,6 +7,21 @@ import {TokenContent} from '@sharedTypes/DBTypes';
 import path from 'path';
 import getVideoThumbnail from './utils/getVideoThumbnail';
 import sharp from 'sharp';
+import multer, { FileFilterCallback } from 'multer';
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/'); // Specify upload directory
+  },
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, `${uniqueSuffix}-${file.originalname}`); // Define filename
+  },
+});
+
+// Set up multer upload instance
+const upload = multer({ storage: storage });
+
 
 const notFound = (req: Request, res: Response, next: NextFunction) => {
   const error = new CustomError(`🔍 - Not Found - ${req.originalUrl}`, 404);
@@ -59,6 +74,31 @@ const authenticate = async (
   }
 };
 
+const uploadProfilePicture = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    // Check if file was uploaded successfully
+    if (!req.file) {
+      throw new CustomError('Profile picture not uploaded', 400);
+    }
+
+    const src = path.join(__dirname, '..', 'uploads', req.file.filename);
+
+    // Resize and save profile picture thumbnail using sharp
+    await sharp(src)
+      .resize({ width: 320, height: 240 })
+      .toFile(src + '-thumb.jpg'); // Save thumbnail with a different filename
+
+    // Proceed to the next middleware
+    next();
+  } catch (error) {
+    next(error); // Pass error to the error handler middleware
+  }
+};
+
 const makeThumbnail = async (
   req: Request,
   res: Response,
@@ -89,4 +129,4 @@ const makeThumbnail = async (
   }
 };
 
-export {notFound, errorHandler, authenticate, makeThumbnail};
+export {notFound, errorHandler, authenticate, makeThumbnail, uploadProfilePicture };

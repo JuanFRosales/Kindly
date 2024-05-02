@@ -1,35 +1,23 @@
-import * as React from 'react';
-import { ScrollView, ImageBackground, StyleSheet } from 'react-native';
-import UserPost from '../components/UserPost';
-
-
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React from "react";
+import { StyleSheet, ImageBackground, ScrollView } from "react-native";
+import { NavigationProp, ParamListBase } from "@react-navigation/native";
+import { useMedia } from "../hooks/apiHooks";
+import UserPost from "../components/UserPost"; // Corrected component name
 
 const Feed = () => {
+  const { mediaArray } = useMedia(); // Assuming useMedia hook returns mediaArray correctly
+
   return (
     <ImageBackground
-      source={require('./gradient.png')} // Provide the correct relative path to the image
+      source={require("./gradient.png")} // Assuming gradient.png is in the same directory
       style={styles.backgroundImage}
-      resizeMode="cover" // Cover the entire container
+      resizeMode="cover"
     >
       <ScrollView contentContainerStyle={styles.scrollView}>
-        <UserPost
-          mode="elevated"
-          title="First Post"
-          description="hello world"
-          onPress={() => console.log('Post 1 pressed')}
-        />
-        <UserPost
-          mode="elevated"
-          title="Post 2"
-          description="Welcome to the world of React Native!"
-          onPress={() => console.log('Post 2 pressed')}
-        />
-        <UserPost
-          mode="elevated"
-          title="Last Post"
-          description=""
-          onPress={() => console.log('Post 3 pressed')}
-        />
+        {mediaArray.map((item, index) => (
+          <UserPost key={index.toString()} item={item} />
+        ))}
       </ScrollView>
     </ImageBackground>
   );
@@ -38,8 +26,8 @@ const Feed = () => {
 const styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,
-    resizeMode: 'cover',
-    zIndex: 50,
+    resizeMode: "cover",
+    zIndex: 0, // Changed zIndex to 0 as it should be behind other elements
   },
   scrollView: {
     flexGrow: 1,

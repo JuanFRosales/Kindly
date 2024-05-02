@@ -10,10 +10,11 @@ type User = {
   email: string;
   user_level_id: number;
   created_at: Date | string;
+  profile_picture?: string;
 };
 
 type MediaItem = {
-  media_id: string;
+  media_id: number;
   user_id: number;
   filename: string;
   filesize: number;
@@ -26,6 +27,7 @@ type MediaItem = {
 type Comment = {
   media_id: number;
   user_id: number;
+  comment_text: string;
   created_at: Date;
 };
 
