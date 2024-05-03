@@ -1,72 +1,98 @@
-import { Card, Icon, ListItem, Button, Avatar, Text } from "@rneui/base";
-import { MediaItemWithOwner } from "../types/DBTypes";
-import { useUserContext } from "../hooks/ContextHooks";
-import Approvals from "./Approvals";
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import { Card, Button, Text } from 'react-native-paper';
+import { MediaItemWithOwner } from '../types/DBTypes';
+import { useUserContext } from '../hooks/ContextHooks';
+import Approvals from './Approvals';
+import UserAvatar from './UserAvatar';
 
-type Props = {
-  item: MediaItemWithOwner;
-};
-
-const UserPost = ({ item }: Props) => {
+const UserPost = ({ item }: { item: MediaItemWithOwner }) => {
   const { user } = useUserContext();
-  return (
-    <Card>
-      <Card.Image
-        style={{ aspectRatio: 1, height: 300 }}
-        source={{ uri: "http:" + item }}
-      />
-      <Card.Divider />
-      <ListItem.Swipeable
-        onSwipeBegin={(evt) => {
-          console.log(evt);
-        }}
-        leftContent={(reset) => (
-          <ListItem>
-            {user && user.user_id === item.user_id ? (
-              <>
-                <Button
-                  color="error"
-                  onPress={() => {
-                    console.log("delete");
-                  }}
-                >
-                  {" "}
-                  <Icon type="ionicon" name="trash" color="white" />
-                </Button>
-              </>
-            ) : (
-              <ListItem.Content>
-                <ListItem.Title>Kukkuu</ListItem.Title>
-              </ListItem.Content>
-            )}
-          </ListItem>
-        )}
-      >
-        {user && user.user_id === item.user_id && (
-          <ListItem.Chevron
-            color="black"
-            style={{ transform: "rotate(180deg)" }}
-          />
-        )}
-        <Avatar
-          size={50}
-          icon={{
-            name: item.media_type.includes("image") ? "image" : "film",
-            type: "ionicon",
-            color: "#333",
-          }}
-        />
-        <ListItem.Content>
-          <Text h4>{item.title}</Text>
-          <Text>
-            By: {item.username}, at:{" "}
-            {new Date(item.created_at).toLocaleString("fi-FI")}
-          </Text>
-        </ListItem.Content>
 
-        <Approvals item={item} />
-      </ListItem.Swipeable>
+  return (
+    <Card style={styles.card}>
+      <Card.Cover
+        source={{ uri: 'http:' + item.thumbnail }}
+        style={styles.cardCover}
+      />
+      <Card.Content style={styles.content}>
+        <View style={styles.userInfo}>
+          <UserAvatar style={styles.avatar} />
+          <Text style={styles.username}>{item.username}</Text>
+        </View>
+        <View style={styles.postInfo}>
+        <Text style={styles.title}>{item.title}</Text>
+        <Text style={styles.description}> {item.description}</Text>
+        </View>
+      </Card.Content>
+      {user && user.user_id === item.user_id && (
+        <Card.Actions style={styles.actions}>
+          <Approvals item={item} />
+        </Card.Actions>
+      )}
     </Card>
   );
 };
+
+const styles = StyleSheet.create({
+  card: {
+    marginVertical: 10,
+    marginHorizontal: 20,
+    borderRadius: 10,
+    elevation: 3,
+    backgroundColor: 'rgba(255, 161, 146, 0.7)',
+    padding: 20,
+    borderColor: 'peachpuff',
+    borderWidth: 4,
+    overflow: 'visible',
+  },
+  cardCover: {
+    aspectRatio: 1,
+    height: 300,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+  },
+  content: {
+    padding: 10,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    marginTop: 5,
+    color: '#751102',
+    textShadowColor: 'peachpuff',
+    textShadowOffset: { width: 1, height: 1 },
+  },
+  description: {
+    fontSize: 16,
+    color: '#751102',
+    textShadowColor: 'peachpuff',
+    textShadowOffset: { width: 2, height: 1 },
+  },
+  userInfo: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    fontSize: 28,
+  },
+  postInfo: {
+    marginTop: 10,
+    marginLeft : 78,
+    flexDirection: 'column',
+  },
+  avatar: {
+    marginRight: 10,
+  },
+  username: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'peachpuff',
+    textShadowColor: '#751102',
+    textShadowOffset: { width: 1, height: 1 },
+  },
+  actions: {
+    justifyContent: 'flex-end',
+  },
+});
+
 export default UserPost;

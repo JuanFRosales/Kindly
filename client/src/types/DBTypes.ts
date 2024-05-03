@@ -21,6 +21,7 @@ type MediaItem = {
   media_type: string;
   title: string;
   description: string;
+  thumbnail: string;
   created_at: Date | string;
 };
 

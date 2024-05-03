@@ -5,6 +5,8 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import Feed from "../views/Feed";
 import ProfileView from "../views/Profile";
 import Settings from "../views/Settings";
+import Upload from "../views/Upload";
+import Login from "../views/Login";
 
 const BottomNavigator = () => {
   const [index, setIndex] = React.useState(0);
@@ -12,12 +14,17 @@ const BottomNavigator = () => {
     { key: "profile", title: "Profile", icon: "account" },
     { key: "feed", title: "Feed", icon: "cards-heart-outline" },
     { key: "settings", title: "Settings", icon: "wrench" },
+    { key: "upload", title: "Upload", icon: "plus" },
+    { key: "login", title: "Login", icon: "plus" },
+
   ]);
 
   const renderScene = BottomNavigation.SceneMap({
     profile: ProfileView,
     feed: Feed,
     settings: Settings,
+    upload: Upload,
+    login: Login,
   });
 
   const renderIcon = ({
