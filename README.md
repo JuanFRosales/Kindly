@@ -5,10 +5,8 @@
 - React Native
 - TypeScript
 - Expo
-- React Native Paper (RN Library)
+- React Native UI Kittens (RN Library)
 
 ### Server
 - RestAPI
-- Express
-- NodeJS
 - TypeScript
