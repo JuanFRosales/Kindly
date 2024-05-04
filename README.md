@@ -6,6 +6,7 @@
 - TypeScript
 - Expo
 - React Native UI Kittens (RN Library)
+- React Native UI Kittens (RN Library)
 
 ### Server
 - RestAPI
