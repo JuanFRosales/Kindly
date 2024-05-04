@@ -10,3 +10,16 @@
 ### Server
 - RestAPI
 - TypeScript
+
+# Kindly CI/CD
+
+## This workflow uses docker mysql container and test:
+ - API server
+ - Auth server
+
+## CI/CD Test stack:
+ - Supertest
+ - Jest
+ - Docker
+ - MySQL
+ - GitHub actions
