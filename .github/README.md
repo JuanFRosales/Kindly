@@ -1,9 +1,9 @@
 # This workflow uses db container and test:
-## - API server
-## - Auth server
+ - API server
+ - Auth server
 
 # Test stack:
-## - Supertest
-## - Jest
-## - Docker
-## - GitHub actions
+ - Supertest
+ - Jest
+ - Docker
+ - GitHub actions
