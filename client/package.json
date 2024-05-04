@@ -20,8 +20,6 @@
     "expo-image-picker": "^14.7.1",
     "expo-status-bar": "~1.11.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-hook-form": "^7.51.3",
     "react-native": "^0.73.6",
     "react-native-elements": "^3.4.3",
     "react-native-linear-gradient": "^2.8.3",
