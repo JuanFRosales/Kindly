@@ -16,7 +16,7 @@ jobs:
         env:
           MYSQL_ROOT_PASSWORD: password
           MYSQL_DATABASE: KindlyApp
-          MYSQL_USER: root
+          MYSQL_USER: KindlyUser
           MYSQL_PASSWORD: password
         ports:
           - 3306
