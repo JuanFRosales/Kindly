@@ -33,7 +33,7 @@ jobs:
         
     - name: Install dependencies for api
       working-directory: server/api-server
-      run: npm ci
+      run: npm i
       
     - name: Run API server tests
       working-directory: server/api-server
@@ -41,7 +41,7 @@ jobs:
 
     - name: Install dependencies for auth
       working-directory: server/auth-server
-      run: npm ci
+      run: npm i
       
     - name: Run Auth server tests
       working-directory: server/auth-server
