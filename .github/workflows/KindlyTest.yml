@@ -1,0 +1,48 @@
+name: CI/CD Kindly
+
+on:
+    push:
+      branches: [main, Khai]
+    pull_request:
+      branches: [main, Khai]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    services:
+      mysql:
+        image: mysql:latest
+        env:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: KindlyApp
+          MYSQL_USER: root
+          MYSQL_PASSWORD: password
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+        
+    - name: Install dependencies for api
+      working-directory: server/api-server
+      run: npm ci
+      
+    - name: Run API server tests
+      working-directory: server/api-server
+      run: npm test
+
+    - name: Install dependencies for auth
+      working-directory: server/auth-server
+      run: npm ci
+      
+    - name: Run Auth server tests
+      working-directory: server/auth-server
+      run: npm test
