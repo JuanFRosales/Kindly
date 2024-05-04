@@ -31,6 +31,14 @@ jobs:
       with:
         node-version: '14'
         
+    - name: Install dependencies for auth
+      working-directory: server/auth-server
+      run: npm i
+
+    - name: Run Auth server tests
+      working-directory: server/auth-server
+      run: npm test
+
     - name: Install dependencies for api
       working-directory: server/api-server
       run: npm i
@@ -39,10 +47,3 @@ jobs:
       working-directory: server/api-server
       run: npm test
 
-    - name: Install dependencies for auth
-      working-directory: server/auth-server
-      run: npm i
-      
-    - name: Run Auth server tests
-      working-directory: server/auth-server
-      run: npm test
