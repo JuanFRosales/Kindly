@@ -31,7 +31,7 @@ const login = async (
       return;
     }
 
-    if (user.password && !bcrypt.compareSync(password, user.password)) {
+    if (user.password ? !bcrypt.compareSync(password, user.password):null) {
       next(new CustomError('Incorrect username/password', 403));
       return;
     }

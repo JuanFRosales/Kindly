@@ -305,7 +305,7 @@ td.code {
     background: var(--dark-gray);
     width: 100%;
   }
-  
+
   .nav-toggle .btn {
     margin: 10px 14px;
   }
@@ -369,7 +369,7 @@ div.code-toolbar.code-toolbar > .toolbar {
   top: .4rem;
   right: .4rem;
 }
-div.code-toolbar.code-toolbar > .toolbar > .toolbar-item > button:hover, 
+div.code-toolbar.code-toolbar > .toolbar > .toolbar-item > button:hover,
 div.code-toolbar.code-toolbar > .toolbar > .toolbar-item > button:focus {
   color: var(--white);
 }
