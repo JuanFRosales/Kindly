@@ -1,18 +1,18 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, ImageBackground, ScrollView } from "react-native";
-import { NavigationProp, ParamListBase } from "@react-navigation/native";
 import { useMedia } from "../hooks/apiHooks";
-import UserPost from "../components/UserPost"; // Corrected component name
+import UserPost from "../components/UserPost";
+import { Button } from "react-native-elements";
 
 const Feed = () => {
-  const { mediaArray } = useMedia(); // Assuming useMedia hook returns mediaArray correctly
-
+  const { mediaArray } = useMedia();
+  const [toggleRegister, setToggleRegister] = useState(false);
+  const handleToggle = () => setToggleRegister(!toggleRegister);
   return (
     <ImageBackground
-      source={require("./gradient.png")} // Assuming gradient.png is in the same directory
-      style={styles.backgroundImage}
-      resizeMode="cover"
+    source={require("./gradient.png")}
+    style={styles.backgroundImage}
+    resizeMode="cover"
     >
       <ScrollView contentContainerStyle={styles.scrollView}>
         {mediaArray.map((item, index) => (
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,
     resizeMode: "cover",
-    zIndex: 0, // Changed zIndex to 0 as it should be behind other elements
+    zIndex: 0,
   },
   scrollView: {
     flexGrow: 1,
@@ -35,6 +35,22 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginHorizontal: 20,
     paddingBottom: 20,
+  },
+
+  container: {
+    overflow: "hidden",
+    width: "4%",
+    borderColor: "peachpuff",
+    borderWidth: 4,
+    borderRadius: 100,
+    backgroundColor: "rgba(255, 111, 116, 1)",
+    position: "absolute",
+    margin: 16,
+    right: 0,
+    bottom: 0,
+    zIndex: 500,
+    marginRight: 20,
+    opacity: 0.8,
   },
 });
 

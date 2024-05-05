@@ -7,15 +7,12 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 
 
-
 export default function App() {
   return (
     <SafeAreaProvider>
     <UserProvider>
       <UpdateProvider>
       <View style={styles.container}>
-
-
 <BottomNavigator/>
 <Text>
 

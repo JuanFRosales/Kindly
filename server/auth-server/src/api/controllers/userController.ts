@@ -83,8 +83,7 @@ const userPost = async (
     const user = req.body;
     user.password = await bcrypt.hash(user.password, salt);
 
-
-    user.profile_picture = req.file ? req.file.filename : 'default_profile.jpg';
+    user.profile_picture = req.body.profile_picture ? req.body.profile_picture: 'default_profile.jpg';
 
     const newUser = await createUser(user);
     console.log('newUser', newUser);

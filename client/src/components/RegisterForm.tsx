@@ -1,6 +1,6 @@
 import { Controller, useForm } from "react-hook-form";
-import { Button, Card, Input } from "@rneui/base";
-import { Alert } from "react-native";
+import {  Card, Input, Button } from "@rneui/base";
+import { Alert, StyleSheet } from "react-native";
 import { useUser } from "../hooks/apiHooks";
 
 const RegisterForm = ({ handleToggle }: { handleToggle: () => void }) => {
@@ -38,7 +38,7 @@ const RegisterForm = ({ handleToggle }: { handleToggle: () => void }) => {
   };
 
   return (
-    <Card>
+    <Card containerStyle={styles.card}>
       <Controller
         control={control}
         rules={{
@@ -64,6 +64,8 @@ const RegisterForm = ({ handleToggle }: { handleToggle: () => void }) => {
             value={value}
             autoCapitalize="none"
             errorMessage={errors.username?.message}
+            style={{fontSize: 25, fontWeight: 'bold', color: 'white', backgroundColor: 'rgba(255, 161, 146, 0.9)', margin: -4, borderColor: 'peachpuff', borderWidth: 4, borderRadius: 10, padding: 10, textAlign: 'center'}}
+
           />
         )}
         name="username"
@@ -88,6 +90,7 @@ const RegisterForm = ({ handleToggle }: { handleToggle: () => void }) => {
             onBlur={onBlur}
             onChangeText={onChange}
             value={value}
+            style={{fontSize: 25, fontWeight: 'bold', color: 'white', backgroundColor: 'rgba(255, 161, 146, 0.9)', margin: -4, borderColor: 'peachpuff', borderWidth: 4, borderRadius: 10, padding: 10, textAlign: 'center'}}
             errorMessage={errors.password?.message}
           />
         )}
@@ -108,7 +111,9 @@ const RegisterForm = ({ handleToggle }: { handleToggle: () => void }) => {
             onBlur={onBlur}
             onChangeText={onChange}
             value={value}
+            style={{fontSize: 25, fontWeight: 'bold', color: 'white', backgroundColor: 'rgba(255, 161, 146, 0.9)', margin: -4, borderColor: 'peachpuff', borderWidth: 4, borderRadius: 10, padding: 10, textAlign: 'center'}}
             errorMessage={errors.confirmPassword?.message}
+
           />
         )}
         name="confirmPassword"
@@ -140,13 +145,43 @@ const RegisterForm = ({ handleToggle }: { handleToggle: () => void }) => {
             value={value}
             errorMessage={errors.email?.message}
             autoCapitalize="none"
+            style={{fontSize: 25, fontWeight: 'bold', color: 'white', backgroundColor: 'rgba(255, 161, 146, 0.9)', margin: -4, borderColor: 'peachpuff', borderWidth: 4, borderRadius: 10, padding: 10, textAlign: 'center'}}
           />
         )}
         name="email"
       />
-      <Button title="Register" onPress={handleSubmit(doRegister)} />
+      <Button title="Register" buttonStyle={styles.button} titleStyle={styles.title} onPress={handleSubmit(doRegister)} />
     </Card>
   );
 };
 
+const styles = StyleSheet.create({
+  card: {
+    backgroundColor: "rgba(255, 161, 146, 0.9)",
+    margin: -3,
+    borderColor: "peachpuff",
+    borderWidth: 4,
+    borderRadius: 10,
+    padding: 10,
+    textAlign: "center",
+    width: "100%",
+  },
+  button: {
+    backgroundColor: 'rgba(255, 111, 116, 1)',
+    borderColor: 'peachpuff',
+    borderWidth: 4,
+    borderRadius: 10,
+    marginTop: 10,
+    width: '95%',
+    alignSelf: 'center',
+    zIndex: 1000,
+
+},
+title: {
+  fontSize: 25,
+  fontWeight: 'bold',
+  color: 'white',
+  textAlign: 'center',
+},
+});
 export default RegisterForm;

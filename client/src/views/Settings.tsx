@@ -1,6 +1,7 @@
 import * as React from "react";
-import { ScrollView, ImageBackground, StyleSheet } from "react-native";
-import UserPost from "../components/UserPost";
+import { ImageBackground, StyleSheet } from "react-native";
+import UpdateAvatar from "../components/UpdateProfilePicture";
+
 
 const Settings = () => {
   return (
@@ -8,7 +9,10 @@ const Settings = () => {
       source={require("./gradient.png")} // Provide the correct relative path to the image
       style={styles.backgroundImage}
       resizeMode="cover" // Cover the entire container
-    ></ImageBackground>
+    >
+      <UpdateAvatar />
+
+    </ImageBackground>
   );
 };
 

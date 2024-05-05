@@ -51,8 +51,8 @@ const useMedia = (user: UserWithNoPassword | null = null) => {
       itemsWithOwner.reverse();
       setLoading(false);
       setMediaArray(itemsWithOwner);
-    } catch (error) {
-      console.error("getMedia failed", error);
+    } catch (error: Error | any) {
+      console.error("getMedia failed", error.message);
     }
   };
 
