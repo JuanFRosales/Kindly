@@ -5,6 +5,7 @@ import { MediaItemWithOwner } from '../types/DBTypes';
 import { useUserContext } from '../hooks/ContextHooks';
 import Approvals from './Approvals';
 import UserAvatar from './UserAvatar';
+import Comments from './Comments';
 
 const UserPost = ({ item }: { item: MediaItemWithOwner }) => {
   const { user } = useUserContext();
@@ -23,13 +24,10 @@ const UserPost = ({ item }: { item: MediaItemWithOwner }) => {
         <View style={styles.postInfo}>
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.description}> {item.description}</Text>
+      <Approvals item={item} />
+      <Comments item={item} />
         </View>
       </Card.Content>
-      {user && user.user_id === item.user_id && (
-        <Card.Actions style={styles.actions}>
-          <Approvals item={item} />
-        </Card.Actions>
-      )}
     </Card>
   );
 };

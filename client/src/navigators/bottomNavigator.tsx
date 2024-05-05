@@ -13,10 +13,9 @@ const BottomNavigator = () => {
   const [routes] = React.useState([
     { key: "profile", title: "Profile", icon: "account" },
     { key: "feed", title: "Feed", icon: "cards-heart-outline" },
-    { key: "settings", title: "Settings", icon: "wrench" },
+    { key: "settings", title: "settings", icon: "wrench" },
     { key: "upload", title: "Upload", icon: "plus" },
-    { key: "login", title: "Login", icon: "plus" },
-
+    { key: "login", title: "Login", icon: "login" },
   ]);
 
   const renderScene = BottomNavigation.SceneMap({
@@ -41,6 +40,7 @@ const BottomNavigator = () => {
   };
 
   return (
+
     <View style={{ flex: 1 }}>
       <BottomNavigation
         navigationState={{ index, routes }}
@@ -50,8 +50,8 @@ const BottomNavigator = () => {
         barStyle={styles.navigator}
         activeColor="#751102"
         inactiveColor="#ffea98"
-        labeled={true} // Show labels in tabs (change to `true` to show labels)
-        shifting={true} // Disable shifting style animation
+        labeled={true}
+        shifting={true}
       />
     </View>
   );

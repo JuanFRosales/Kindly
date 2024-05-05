@@ -3,12 +3,13 @@ import { Avatar } from 'react-native-paper';
 import { ImageSourcePropType, StyleSheet } from 'react-native';
 
 interface UserAvatarProps {
-  style?: any; // Define the type for the style prop
+  style?: any;
 }
 
 const UserAvatar: React.FC<UserAvatarProps> = ({ style }) => {
   const avatarSource: ImageSourcePropType = {
-    uri: 'https://avatars.githubusercontent.com/u/26627004',
+    uri: 'https://randomuser.me/api/portraits',
+
   };
 
   return (
