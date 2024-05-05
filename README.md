@@ -27,30 +27,35 @@
 
 ## Database 
 - Created with MYSQL script provided here: 
+[link to script](/db/kindly-db.sql)
 
 - DB Diagram image: 
+![image](/db/Kindly-diagram-2.jpg)
 
 
 ## Functionalities / bugs
 ### Functionalities: 
 - CRUD Operations
-- 
+- Post Approvals
 
 ### Bugs:
 - Some bugs
 
 ## Study References
-- 
+- [React Native Docs](https://reactnative.dev/docs/getting-started) 
+- [Expo Docs](https://docs.expo.dev/)
+- [React Native Papers Docs](https://callstack.github.io/react-native-paper/)
+- [Metropolia old materials](https://github.com/ilkkamtk/hybridisovellukset)
 
 # Kindly CI/CD
 
-### Link to CI/CD folder: [.github](https://10.120.32.95/auth-server/api/v1/)
+### Link to CI/CD folder: [.github](/.github/workflows/KindlyTest.yml)
 
 ### Link to Testing folders:
-- API Test: 
-- Auth Test: 
+- [API Test](/server/api-server/test/) 
+- [Auth Test](/server/auth-server/test/) 
 
-## This workflow uses docker mysql container and test:
+### This workflow uses docker mysql container and test:
  - API server
  - Auth server
 
