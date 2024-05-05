@@ -36,8 +36,8 @@ const Profile = () => {
             <Icon name="logout" color="white" />
           </Button>
         </Card>
-      ) : null}{" "}
-      {!user ? ( // Render login card if user is not logged in
+      ) : null}{}
+      {!user ? (
         <Card containerStyle={styles.form}>
           <Card.Title style={styles.text}>Login to see content</Card.Title>
         </Card>
