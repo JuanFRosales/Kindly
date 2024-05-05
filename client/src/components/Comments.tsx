@@ -65,7 +65,7 @@ const Comments = ({ item }: { item: MediaItemWithOwner }) => {
 
   return (
     <>
-      {comments.length > 0 && (
+      {comments.length > 0 ? (
         <Card>
           <Card.Title>Comments:</Card.Title>
           {comments.map((comment) => (
@@ -80,8 +80,8 @@ const Comments = ({ item }: { item: MediaItemWithOwner }) => {
             </ListItem>
           ))}
         </Card>
-      )}
-      {user && (
+      ) : null}
+      {user ? (
         <Card>
           <Card.Title>Post Comment</Card.Title>
           <Controller
@@ -107,7 +107,7 @@ const Comments = ({ item }: { item: MediaItemWithOwner }) => {
           <Button onPress={handleSubmit(doComment)} title={"Post"} />
           <Card.Divider />
         </Card>
-      )}
+      ) : null}
     </>
   );
 };

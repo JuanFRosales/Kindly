@@ -58,12 +58,12 @@ const UpdateAvatar = () => {
 
   return (
     <Card containerStyle={styles.card}>
-        {user && (
+        {user ? (
           <Card.Image
             style={styles.profilepic}
             source={{ uri: user.profile_picture }}
           />
-        )}
+        ):null}
         <Button
           title="Choose media"
           onPress={pickImage}

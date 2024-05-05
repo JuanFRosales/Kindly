@@ -85,8 +85,8 @@ const Upload = () => {
           activeOpacity={1}
         >
           <Card containerStyle={styles.card}>
-            {image &&
-              (image.assets![0].mimeType?.includes("video") ? (
+            {image ? (
+              image.assets![0].mimeType?.includes("video") ? (
                 <Video
                   style={{
                     height: 300 * 1.5,
@@ -103,15 +103,16 @@ const Upload = () => {
                     style={styles.image}
                   />
                 </View>
-              ))}
-            {!image && (
+              )
+            ) : null}
+            {!image ? (
               <TouchableOpacity
                 onPress={pickImage}
                 style={styles.placeholderContainer}
               >
                 <Text style={styles.placeholderText}>+</Text>
               </TouchableOpacity>
-            )}
+            ) : null}
             <Card.Divider />
             <Controller
               control={control}

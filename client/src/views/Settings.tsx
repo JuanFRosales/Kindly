@@ -2,7 +2,6 @@ import * as React from "react";
 import { ImageBackground, StyleSheet } from "react-native";
 import UpdateAvatar from "../components/UpdateProfilePicture";
 
-
 const Settings = () => {
   return (
     <ImageBackground
@@ -11,7 +10,6 @@ const Settings = () => {
       resizeMode="cover" // Cover the entire container
     >
       <UpdateAvatar />
-
     </ImageBackground>
   );
 };
@@ -19,7 +17,7 @@ const Settings = () => {
 const styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,
-    resizeMode: "cover", // Cover the entire container
+    resizeMode: "cover",
   },
 });
 

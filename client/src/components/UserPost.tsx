@@ -4,7 +4,6 @@ import { Card, Text } from 'react-native-paper';
 import { MediaItemWithOwner } from '../types/DBTypes';
 import { useUserContext } from '../hooks/ContextHooks';
 import Approvals from './Approvals';
-import UserAvatar from './UserAvatar';
 import Comments from './Comments';
 import { Image } from '@rneui/base';
 
@@ -24,8 +23,8 @@ const UserPost = ({ item }: { item: MediaItemWithOwner }) => {
         </View>
         <View style={styles.postInfo}>
         <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.description}> {item.description}</Text>
-      <Approvals item={item} />
+        <Text style={styles.description}>{item.description}</Text>
+        <Approvals item={item} />
         </View>
       </Card.Content>
     </Card>

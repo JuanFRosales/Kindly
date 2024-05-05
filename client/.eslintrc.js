@@ -8,5 +8,6 @@ module.exports = {
       },
     },
   ],
-  rules: {'import/order': ['error', {'newlines-between': 'never'}]},
+  rules: {'import/order': ['error', {'newlines-between': 'never'}], "jsx-expressions/strict-logical-expressions": "error"},
+  plugins: ["jsx-expressions"]
 };

@@ -58,7 +58,7 @@ title: {
 backgroundImage: {
   flex: 1,
   resizeMode: "cover",
-  zIndex: 1000,
+
 },
 form: {
   margin: 'auto',

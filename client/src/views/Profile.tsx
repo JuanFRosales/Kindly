@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Card, Icon, ListItem } from "@rneui/base";
 import { useUserContext } from "../hooks/ContextHooks";
-import { ImageBackground, StyleSheet } from "react-native";
+import { ImageBackground, StyleSheet, Text } from "react-native";
 import MyFiles from "./MyFiles";
 
 const Profile = () => {
@@ -19,29 +19,29 @@ const Profile = () => {
             style={styles.profilepic}
             source={{ uri: user.profile_picture }}
           >
-            {/* You can adjust the above Image component according to your requirements */}
           </Card.Image>
           <ListItem containerStyle={styles.list}>
             <ListItem.Title style={styles.title}>
-              {user.username}
+             <Text> {user.username} </Text>
             </ListItem.Title>
             <ListItem.Title style={styles.title}>
-              <Icon iconStyle={styles.icon} name="email" /> {user.email}
+              <Icon iconStyle={styles.icon} name="email" /> <Text>{user.email}</Text>
             </ListItem.Title>
           </ListItem>
           <MyFiles />
           <Button buttonStyle={styles.button} onPress={handleLogout}>
-            Logout &nbsp;
+           <Text>
+           Logout &nbsp;
+            </Text>
             <Icon name="logout" color="white" />
           </Button>
         </Card>
       ) : null}{" "}
-      {/* Render nothing if user is not logged in */}
-      {!user && ( // Render login card if user is not logged in
+      {!user ? ( // Render login card if user is not logged in
         <Card containerStyle={styles.form}>
           <Card.Title style={styles.text}>Login to see content</Card.Title>
         </Card>
-      )}
+      ): null}
     </ImageBackground>
   );
 };

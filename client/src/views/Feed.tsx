@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,
     resizeMode: "cover",
-    zIndex: 0,
+
   },
   scrollView: {
     flexGrow: 1,

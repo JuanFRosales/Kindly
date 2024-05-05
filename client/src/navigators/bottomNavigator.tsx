@@ -50,7 +50,7 @@ const BottomNavigator = () => {
         barStyle={styles.navigator}
         activeColor="#751102"
         inactiveColor="#ffea98"
-        labeled={true}
+        labeled={false}
         shifting={true}
       />
     </View>
