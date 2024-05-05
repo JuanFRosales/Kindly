@@ -80,6 +80,11 @@ const styles = StyleSheet.create({
   },
   avatar: {
     marginRight: 10,
+    width: 50,
+    height: 50,
+    borderRadius: 100,
+    borderColor: 'peachpuff',
+    borderWidth: 4,
   },
   username: {
     fontSize: 16,

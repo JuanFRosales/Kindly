@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, ImageBackground, ScrollView } from "react-native";
 import { useMedia } from "../hooks/apiHooks";
 import UserPost from "../components/UserPost";
-import { Button } from "react-native-elements";
+
 
 const Feed = () => {
   const { mediaArray } = useMedia();
