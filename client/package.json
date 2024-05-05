@@ -14,8 +14,9 @@
     "@react-navigation/bottom-tabs": "^6.5.14",
     "@react-navigation/native": "^6.1.12",
     "@react-navigation/native-stack": "^6.9.20",
+
     "@rneui/base": "^4.0.0-rc.8",
-    "axios": "^1.6.8",
+
     "expo": "~50.0.14",
     "expo-av": "~13.10.5",
     "expo-image-picker": "^14.7.1",
