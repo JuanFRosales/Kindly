@@ -1,11 +1,12 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Card, Button, Text } from 'react-native-paper';
+import { Card, Text } from 'react-native-paper';
 import { MediaItemWithOwner } from '../types/DBTypes';
 import { useUserContext } from '../hooks/ContextHooks';
 import Approvals from './Approvals';
 import UserAvatar from './UserAvatar';
 import Comments from './Comments';
+import { Image } from '@rneui/base';
 
 const UserPost = ({ item }: { item: MediaItemWithOwner }) => {
   const { user } = useUserContext();
@@ -18,14 +19,13 @@ const UserPost = ({ item }: { item: MediaItemWithOwner }) => {
       />
       <Card.Content style={styles.content}>
         <View style={styles.userInfo}>
-          <UserAvatar style={styles.avatar} />
+          <Image  source={{ uri: user?.profile_picture }} style={styles.avatar}/>
           <Text style={styles.username}>{item.username}</Text>
         </View>
         <View style={styles.postInfo}>
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.description}> {item.description}</Text>
       <Approvals item={item} />
-      <Comments item={item} />
         </View>
       </Card.Content>
     </Card>

@@ -1,4 +1,4 @@
-import * as React from 'react';
+/*import * as React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import Upload from '../views/Upload';
 import { Button } from 'react-native-elements';
@@ -66,3 +66,4 @@ const styles = StyleSheet.create({
 });
 
 export default UploadButton;
+*/
