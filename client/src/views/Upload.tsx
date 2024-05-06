@@ -113,7 +113,6 @@ const Upload = () => {
                 <Text style={styles.placeholderText}>+</Text>
               </TouchableOpacity>
             ) : null}
-            <Card.Divider />
             <Controller
               control={control}
               rules={{
@@ -124,13 +123,14 @@ const Upload = () => {
               }}
               render={({ field: { onChange, onBlur, value } }) => (
                 <Input
-                  placeholder="Title"
+                  placeholder="Today I..."
                   placeholderTextColor={"white"}
                   onBlur={onBlur}
                   onChangeText={onChange}
                   value={value}
                   errorMessage={errors.title?.message}
-                  style={{ fontSize: 25, fontWeight: "bold", color: "white" }}
+                  style={{ fontSize: 25, fontWeight: "bold", color: "white", marginTop: 10
+                  }}
                 />
               )}
               name="title"
@@ -143,7 +143,7 @@ const Upload = () => {
               }}
               render={({ field: { onChange, onBlur, value } }) => (
                 <Input
-                  placeholder="Description"
+                  placeholder="Please elaborate more..."
                   placeholderTextColor={"white"}
                   onBlur={onBlur}
                   onChangeText={onChange}
@@ -160,15 +160,9 @@ const Upload = () => {
               )}
               name="description"
             />
-            <Button
-              title="Choose media"
-              titleStyle={styles.title}
-              onPress={pickImage}
-              buttonStyle={styles.button}
-            />
             <Card.Divider />
             <Button
-              title="Upload"
+              title="Share"
               buttonStyle={styles.button}
               titleStyle={styles.title}
               onPress={handleSubmit(doUpload)}

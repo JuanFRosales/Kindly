@@ -6,7 +6,7 @@ import {
   MessageResponse,
   UploadResponse,
   UserResponse,
-} from "../types//MessageTypes";
+} from "../types/MessageTypes";
 import {
   Comment,
   Approval,

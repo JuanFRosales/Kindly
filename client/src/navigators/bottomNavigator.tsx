@@ -60,7 +60,7 @@ const BottomNavigator = () => {
 const styles = StyleSheet.create({
   navigator: {
     alignSelf: "center",
-    width: "90%",
+    width: "100%",
     backgroundColor: "#f6a192",
     borderWidth: 8,
     borderRadius: 20,

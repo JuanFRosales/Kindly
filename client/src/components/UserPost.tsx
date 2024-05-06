@@ -1,15 +1,21 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, { useState } from 'react';
+import { Modal, StyleSheet, View } from 'react-native';
 import { Card, Text } from 'react-native-paper';
+import { Button } from 'react-native-elements';
 import { MediaItemWithOwner } from '../types/DBTypes';
 import { useUserContext } from '../hooks/ContextHooks';
 import Approvals from './Approvals';
 import Comments from './Comments';
 import { Image } from '@rneui/base';
 
+
 const UserPost = ({ item }: { item: MediaItemWithOwner }) => {
   const { user } = useUserContext();
+  const [showComments, setShowComments] = useState(false);
 
+  const handleToggleComments = () => {
+    setShowComments(!showComments);
+  };
   return (
     <Card style={styles.card}>
       <Card.Cover
@@ -24,9 +30,25 @@ const UserPost = ({ item }: { item: MediaItemWithOwner }) => {
         <View style={styles.postInfo}>
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.description}>{item.description}</Text>
-        <Approvals item={item} />
         </View>
       </Card.Content>
+      <View style={styles.actions}>
+    <Button  buttonStyle={styles.button} title="📝" onPress={handleToggleComments} />
+        <Approvals item={item} />
+      </View>
+    <Modal
+      visible={showComments}
+      animationType="slide"
+      onRequestClose={() => setShowComments(false)}
+    >
+      <View style={styles.modalContainer}>
+        <View style={styles.modalHeader}>
+          <Text style={styles.modalTitle}>Comments</Text>
+          <Button buttonStyle={styles.button} title="Close" onPress={() => setShowComments(false)} />
+        </View>
+        <Comments item={item} /> {/* Render Comments component */}
+      </View>
+    </Modal>
     </Card>
   );
 };
@@ -94,6 +116,37 @@ const styles = StyleSheet.create({
   },
   actions: {
     justifyContent: 'flex-end',
+    flexDirection: 'row',
+    alignItems: 'baseline',
+  },
+  button: {
+    backgroundColor: "rgba(255, 161, 146, 0.7)",
+    borderColor: "peachpuff",
+    borderWidth: 4,
+    borderRadius: 100,
+    width: 100,
+    margin: 'auto',
+    justifyContent: 'center',
+    padding: 4,
+    marginRight: 20,
+
+  },
+  modalContainer: {
+    flex: 1,
+    backgroundColor: 'rgba(255, 161, 146, 0.9)',
+    padding: 20,
+  },
+  modalHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+  },
+  modalTitle: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: 'peachpuff',
+    textShadowColor: '#751102',
+    textShadowOffset: { width: 1, height: 1 },
   },
 });
 

@@ -64,6 +64,7 @@ const UpdateAvatar = () => {
             source={{ uri: user.profile_picture }}
           />
         ):null}
+        <Card.Title style={styles.title}>Update your profile picture</Card.Title>
         <Button
           title="Choose media"
           onPress={pickImage}

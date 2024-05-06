@@ -1,8 +1,10 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Button, Icon, Badge } from "@rneui/base";
+import {  Badge } from "@rneui/base";
+import { Button } from "react-native-paper";
 import { useEffect, useReducer } from "react";
 import { useApproval } from "../hooks/apiHooks";
 import { Approval, MediaItemWithOwner } from "../types/DBTypes";
+import { StyleSheet } from "react-native";
 
 type ApprovalState = {
   count: number;
@@ -113,25 +115,43 @@ const Approvals = ({ item }: { item: MediaItemWithOwner }) => {
   return (
     <Button
       onPress={handleApproval}
-      type="clear"
-      containerStyle={{
-        position: "absolute",
-        top: 1,
-        right: 3,
-        zIndex: 1,
-      }}
+
+      style={styles.button}
     >
-      <Icon
-        type="material-community"
-        color="#333"
-        name={approvalState.userApproval ? "thumb-up" : "thumb-up-outline"}
-      />
+      ❤️‍🔥
+
       <Badge
         value={approvalState.count}
-        containerStyle={{ position: "absolute", top: 0, right: 0 }}
+        containerStyle={styles.counter}
+        badgeStyle={styles.badge}
       />
     </Button>
   );
 };
+
+const styles = StyleSheet.create({
+  button: {
+      backgroundColor: "none",
+      marginTop: 20,
+      borderWidth: 4,
+      borderRadius: 100,
+      borderColor: "peachpuff",
+      display: "flex",
+      flexDirection: "row",
+      alignItems: "center",
+      width: 25,
+  },
+  counter: {
+      borderWidth: 0,
+      borderRadius: 50,
+     
+
+      alignSelf: "center",
+  },
+  badge: {
+      backgroundColor: "#751102",
+      fontSize: 16,
+  },
+});
 
 export default Approvals;
