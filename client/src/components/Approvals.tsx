@@ -139,12 +139,13 @@ const styles = StyleSheet.create({
       display: "flex",
       flexDirection: "row",
       alignItems: "center",
-      width: 25,
+      width: 75,
+
   },
   counter: {
       borderWidth: 0,
       borderRadius: 50,
-     
+
 
       alignSelf: "center",
   },

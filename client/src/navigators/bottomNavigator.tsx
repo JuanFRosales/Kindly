@@ -35,7 +35,7 @@ const BottomNavigator = () => {
     color: string;
     focused: boolean;
   }) => {
-    const iconSize = focused ? 36 : 30;
+    const iconSize = focused ? 33 : 30;
     return <Icon name={route.icon} size={iconSize} color={color} />;
   };
 
@@ -50,7 +50,7 @@ const BottomNavigator = () => {
         barStyle={styles.navigator}
         activeColor="#751102"
         inactiveColor="#ffea98"
-        labeled={false}
+        labeled={true}
         shifting={true}
       />
     </View>

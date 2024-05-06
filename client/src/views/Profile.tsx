@@ -30,7 +30,7 @@ const Profile = () => {
           </ListItem>
           <MyFiles />
           <Button buttonStyle={styles.button} onPress={handleLogout}>
-           <Text>
+           <Text style={{fontSize:20}}>
            Logout &nbsp;
             </Text>
             <Icon name="logout" color="white" />
@@ -77,13 +77,15 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     margin: 10,
-    fontSize: 30,
+    fontSize: 25,
     fontWeight: "bold",
     width: "100%",
     textAlign: "center",
     overflow: "hidden",
     color: "#751102",
     justifyContent: "space-around",
+    display: "flex",
+    flexDirection: "row",
   },
   list: {
     flexDirection: "column",
@@ -104,7 +106,9 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: "bold",
     alignSelf: "center",
-    marginRight: 10,
+    margin: "auto",
+    justifyContent: "space-around",
+    display: "none",
   },
   form: {
     backgroundColor: "rgba(255, 161, 146, 0.9)",

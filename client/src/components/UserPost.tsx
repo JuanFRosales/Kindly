@@ -46,7 +46,7 @@ const UserPost = ({ item }: { item: MediaItemWithOwner }) => {
           <Text style={styles.modalTitle}>Comments</Text>
           <Button buttonStyle={styles.button} title="Close" onPress={() => setShowComments(false)} />
         </View>
-        <Comments item={item} /> {/* Render Comments component */}
+        <Comments item={item} /> {}
       </View>
     </Modal>
     </Card>
@@ -63,16 +63,20 @@ const styles = StyleSheet.create({
     padding: 20,
     borderColor: 'peachpuff',
     borderWidth: 4,
-    overflow: 'visible',
+
   },
   cardCover: {
     aspectRatio: 1,
     height: 300,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
+    margin: 'auto',
+    alignSelf: 'center',
   },
   content: {
     padding: 10,
+    margin: 'auto',
+    alignItems: 'flex-start',
   },
   title: {
     fontSize: 20,
@@ -96,7 +100,7 @@ const styles = StyleSheet.create({
   },
   postInfo: {
     marginTop: 10,
-    marginLeft : 78,
+    marginLeft : 10,
     flexDirection: 'column',
   },
   avatar: {
@@ -115,7 +119,7 @@ const styles = StyleSheet.create({
     textShadowOffset: { width: 1, height: 1 },
   },
   actions: {
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-start',
     flexDirection: 'row',
     alignItems: 'baseline',
   },

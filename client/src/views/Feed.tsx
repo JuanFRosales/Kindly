@@ -2,23 +2,27 @@ import React, { useState } from "react";
 import { StyleSheet, ImageBackground, ScrollView } from "react-native";
 import { useMedia } from "../hooks/apiHooks";
 import UserPost from "../components/UserPost";
+import { UpdateProvider } from "../contexts/UpdateContext";
 
 
 const Feed = () => {
   const { mediaArray } = useMedia();
   const [toggleRegister, setToggleRegister] = useState(false);
   const handleToggle = () => setToggleRegister(!toggleRegister);
+
   return (
     <ImageBackground
     source={require("./gradient.png")}
     style={styles.backgroundImage}
     resizeMode="cover"
     >
+      <UpdateProvider>
       <ScrollView contentContainerStyle={styles.scrollView}>
         {mediaArray.map((item, index) => (
           <UserPost key={index.toString()} item={item} />
         ))}
       </ScrollView>
+  </UpdateProvider>
     </ImageBackground>
   );
 };
