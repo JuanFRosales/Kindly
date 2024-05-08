@@ -1,5 +1,7 @@
 # Kindly App
-### Link to the visuals: [Link to app](somelink)
+(Works only with Metropolia VPN turned on)
+### Link to the app: [Kindly.](https://users.metropolia.fi/~juanros/Kindly/)
+### Accept https first: [Link](https://10.120.32.95/)
 
 ### Links to back-end "API" in use: 
 
