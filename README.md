@@ -32,7 +32,7 @@
 [link to script](/db/kindly-db.sql)
 
 - DB Diagram image: 
-![image](/db/Kindly-diagram-2.jpg)
+![image](/db/kindly-diagram-final.jpeg)
 
 
 ## Functionalities / bugs
